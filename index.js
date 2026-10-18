@@ -14,6 +14,7 @@ const MALAYSIA_LOCATIONS = {
     "kuala lumpur": { lat: 3.1390, lon: 101.6869, name: "Kuala Lumpur" },
     "johor bahru": { lat: 1.4927, lon: 103.7414, name: "Johor Bahru" },
     "penang": { lat: 5.4164, lon: 100.3301, name: "Penang (Georgetown)" },
+    "bukit jalil": { lat: 3.0491, lon: 101.6804, name: "Bukit Jalil" },
     "melaka": { lat: 2.1896, lon: 102.2501, name: "Melaka" },
     "kota kinabalu": { lat: 5.9804, lon: 116.0735, name: "Kota Kinabalu" },
     "kuching": { lat: 1.5533, lon: 110.3592, name: "Kuching" },
@@ -32,6 +33,24 @@ client.on('messageCreate', async message => {
 
     const content = message.content.trim().toLowerCase();
 
+    // 1. Help Command: !help
+    if (content === '!help') {
+        const embed = new EmbedBuilder()
+            .setColor(0xFFAA00)
+            .setTitle('🇲🇾 Malaysia Weather Bot - Help Menu')
+            .setDescription('Here are the available commands you can use:')
+            .addFields(
+                { name: '!weather [location]', value: 'Get current weather conditions. (e.g., `!weather bukit jalil` or `!weather penang`)' },
+                { name: '!hourly [location]', value: 'Get the 12-hour consecutive forecast. (e.g., `!hourly johor bahru`)' },
+                { name: '!help', value: 'Displays this help menu.' }
+            )
+            .setTimestamp()
+            .setFooter({ text: 'Malaysia Weather Bot' });
+
+        return message.reply({ embeds: [embed] });
+    }
+
+    // 2. Current Weather Command: !weather [city]
     if (content.startsWith('!weather')) {
         const query = content.replace('!weather', '').trim() || 'kuala lumpur';
         const location = MALAYSIA_LOCATIONS[query] || { lat: 3.1390, lon: 101.6869, name: query.charAt(0).toUpperCase() + query.slice(1) };
@@ -61,6 +80,7 @@ client.on('messageCreate', async message => {
         }
     }
 
+    // 3. Hourly Weather Command: !hourly [city]
     if (content.startsWith('!hourly')) {
         const query = content.replace('!hourly', '').trim() || 'kuala lumpur';
         const location = MALAYSIA_LOCATIONS[query] || { lat: 3.1390, lon: 101.6869, name: query.charAt(0).toUpperCase() + query.slice(1) };
