@@ -61,4 +61,4 @@ If you want to run or test this project locally on your machine:
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/JeffyBoii/Malaysia-Weather-Bot.git](https://github.com/JeffyBoii/Malaysia-Weather-Bot.git)
+   git clone https://github.com/JeffyBoii/Malaysia-Weather-Bot.git
