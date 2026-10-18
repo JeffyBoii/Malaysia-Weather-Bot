@@ -27,7 +27,7 @@ const MALAYSIA_LOCATIONS = {
     "perlis": { lat: 6.4444, lon: 100.1985, name: "Perlis (Kangar)" },
     "penang": { lat: 5.4164, lon: 100.3301, name: "Penang (Georgetown)" },
     "selangor": { lat: 3.0738, lon: 101.5183, name: "Selangor (Shah Alam)" },
-    "terengganu": { lat: 3.3331, lon: 103.3256, name: "Terengganu (Kuala Terengganu)" }, // Note: Adjusted default fallback coordinates to capital or general state region cleanly
+    "terengganu": { lat: 3.3331, lon: 103.3256, name: "Terengganu (Kuala Terengganu)" },
     
     // East Malaysia States
     "sabah": { lat: 5.9804, lon: 116.0735, name: "Sabah (Kota Kinabalu)" },
@@ -103,7 +103,8 @@ client.on('messageCreate', async message => {
             const response = await axios.get(url);
             const hourly = response.data.hourly;
 
-            const currentHourIndex = new Date().getHours();
+            // Fixed timezone calculation for Malaysia (UTC+8)
+            const currentHourIndex = (new Date().getUTCHours() + 8) % 24;
             let fields = [];
 
             for (let i = currentHourIndex; i < currentHourIndex + 12; i++) {
