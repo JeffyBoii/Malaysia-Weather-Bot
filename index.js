@@ -65,8 +65,14 @@ client.on('messageCreate', async message => {
 
     // 2. Current Weather Command: !weather [location]
     if (content.startsWith('!weather')) {
-        const query = content.replace('!weather', '').trim() || 'kuala lumpur';
-        const location = MALAYSIA_LOCATIONS[query] || { lat: 3.1390, lon: 101.6869, name: query.charAt(0).toUpperCase() + query.slice(1) };
+        const query = content.replace('!weather', '').trim();
+        
+        // If they just type "!weather" without a location, default to Kuala Lumpur
+        const location = query === '' ? MALAYSIA_LOCATIONS['kuala lumpur'] : MALAYSIA_LOCATIONS[query];
+
+        if (!location) {
+            return message.reply('❌ **Invalid location!** Please choose a valid state, territory, or city in Malaysia (e.g., `!weather selangor`, `!weather penang`).');
+        }
 
         try {
             const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&timezone=Asia/Kuala_Lumpur`;
@@ -95,8 +101,14 @@ client.on('messageCreate', async message => {
 
     // 3. Hourly Weather Command: !hourly [location]
     if (content.startsWith('!hourly')) {
-        const query = content.replace('!hourly', '').trim() || 'kuala lumpur';
-        const location = MALAYSIA_LOCATIONS[query] || { lat: 3.1390, lon: 101.6869, name: query.charAt(0).toUpperCase() + query.slice(1) };
+        const query = content.replace('!hourly', '').trim();
+        
+        // If they just type "!hourly" without a location, default to Kuala Lumpur
+        const location = query === '' ? MALAYSIA_LOCATIONS['kuala lumpur'] : MALAYSIA_LOCATIONS[query];
+
+        if (!location) {
+            return message.reply('❌ **Invalid location!** Please choose a valid state, territory, or city in Malaysia (e.g., `!hourly selangor`, `!hourly penang`).');
+        }
 
         try {
             const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&hourly=temperature_2m,relative_humidity_2m,precipitation_probability,weather_code&timezone=Asia/Kuala_Lumpur`;
