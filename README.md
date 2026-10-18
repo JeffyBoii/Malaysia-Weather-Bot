@@ -3,6 +3,15 @@
   <h1>🇲🇾 Malaysia Weather Discord Bot</h1>
   <p><b>Accurate weather reports and hourly forecasts for Malaysia, right inside your Discord server.</b></p>
 
+  <p>
+    <img src="https://img.shields.io/badge/runtime-Node.js-green?style=flat-square&logo=node.js" alt="Node.js">
+    <img src="https://img.shields.io/badge/library-Discord.js_v14-blue?style=flat-square&logo=discord" alt="Discord.js">
+    <img src="https://img.shields.io/badge/API-Open--Meteo-orange?style=flat-square" alt="Open-Meteo">
+    <img src="https://img.shields.io/badge/hosting-Railway-purple?style=flat-square&logo=railway" alt="Railway">
+    <img src="https://img.shields.io/badge/uptime-24%2F7-brightgreen?style=flat-square" alt="Uptime 24/7">
+    <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square" alt="License">
+  </p>
+
 </div>
 
 ---
