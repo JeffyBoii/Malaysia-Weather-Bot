@@ -27,7 +27,7 @@ Running **24/7** in the cloud, ensuring uninterrupted uptime for your community.
 ## 🎯 Features
 
 ### Weather Reports
-- **Current Weather (`!weather [location]`)**: Fetches real-time temperature, apparent ("feels like") temperature, weather condition descriptions, wind speeds, and relative humidity.
+- **Current Weather (`!weather [location]`)**: Fetches real-time temperature, apparent ("feels like") temperature, weather condition descriptions, wind speeds, relative humidity and shows an approximate Haze Index.
 - **12-Hour Forecast (`!hourly [location]`)**: Displays a consecutive 12-hour breakdown showing hour-by-hour temperature shifts, condition indicators, and rain/precipitation probabilities.
 - **Interactive Help Menu (`!help`)**: Provides a structured command guide with usage examples.
 
